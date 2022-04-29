@@ -9,3 +9,4 @@
 
 https://github.com/jwtill/react-todo-app
 * 12 break for lunch
+* 1 continue with todo video
