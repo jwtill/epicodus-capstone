@@ -11,3 +11,5 @@ https://github.com/jwtill/react-todo-app
 * 12 break for lunch
 * 1 continue with todo video
 * 2:15 Watch another React video on hooks: https://www.youtube.com/watch?v=O6P86uwfdR0
+* 3:00 work on visual layout
+* 3:30 Watch video on react and databases https://www.youtube.com/watch?v=HVdMhKN2ng4
