@@ -13,3 +13,4 @@ https://github.com/jwtill/react-todo-app
 * 2:15 Watch another React video on hooks: https://www.youtube.com/watch?v=O6P86uwfdR0
 * 3:00 work on visual layout
 * 3:30 Watch video on react and databases https://www.youtube.com/watch?v=HVdMhKN2ng4
+* 4:30 Begin this video on hooks: https://www.youtube.com/watch?v=3bucBLOSUt0&list=PL6ubUCP07zW6_AyMYUNohwKq2NQDlZigO&index=9
