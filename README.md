@@ -5,3 +5,4 @@
 * 9:00 Review upper cohort project similar in design
 * 9:30: Review C# https://www.youtube.com/watch?v=wxznTygnRfQ&t=180s
 * 9:50: https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_todo_list_beginning Can I do this in React? 
+* 10:10: Watch video and follow along to make toDoList in React https://www.youtube.com/watch?v=E1E08i2UJGI
