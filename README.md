@@ -23,3 +23,4 @@ https://github.com/jwtill/react-todo-app
 * 9:53 Continue watching
 * 10:28 Continue watching and coding along
 * 11:13 Continue watching
+* 11:59 Continue watching
