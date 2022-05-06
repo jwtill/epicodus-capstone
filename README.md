@@ -20,3 +20,4 @@ https://github.com/jwtill/react-todo-app
 * 8:00 Watch refresher course on React https://www.youtube.com/watch?v=bMknfKXIFA8
 * 8:34 Continue watching
 * 9:11 Continue watching
+* 9:53 Continue watching
