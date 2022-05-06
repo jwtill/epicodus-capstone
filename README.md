@@ -26,3 +26,5 @@ https://github.com/jwtill/react-todo-app
 * 11:59 Continue watching
 * 1:24 Continue watching
 * 2:13 Continue watching
+* 3:07 Begin new course on tailwind css https://scrimba.com/learn/tailwind/welcome-to-the-tailwind-css-course-cnk72mAJ#
+* 3:37 Continue with video
