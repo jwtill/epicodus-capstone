@@ -14,10 +14,12 @@ body {
 form {
   width: 25%;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 0px;
   padding: 40px;
   background-color: black;
   border-radius: 5px;
+  position:relative;
+  top: -80px;
 }
 
 input {
@@ -64,8 +66,8 @@ input[type="text"] {
 }
 
 /* hamburger */
+/* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
 .toggler {
-  /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
   z-index: 2;
   height: 50px;
   width: 50px;
@@ -83,9 +85,6 @@ input[type="text"] {
   height: 40px;
   width: 40px;
   padding: 0.6rem;
-
-  /* FOR DISPLAYING EVERY ELEMENT IN THE CENTER : */
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,11 +142,11 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 
 
 /* MAIN MENU WITH THE WHITE BACKGROUND AND THE TEXT :  */
-
+/* This is what's causing trouble with the form position */
 .menu {
   background: grey;
-  width: 0%;
-  height: 100vh;
+  width: 0;
+  height: 120px;
 
   /* APPLYING TRANSITION TO THE MENU :  */
 
@@ -157,7 +156,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 /* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
 
 .toggler:checked~.menu {
-  width: 30%;
+  width: 15%;
 }
 
 
