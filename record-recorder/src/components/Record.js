@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import AllRecords from "./AllRecords"
+
 
 function Record(props) {
   return (
