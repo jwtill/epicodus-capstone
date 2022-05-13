@@ -1,222 +1,226 @@
  * {
-  /* box-sizing: border-box; */
-  margin: 0;
-  padding: 0;
-}
+   /* box-sizing: border-box; */
+   margin: 0;
+   padding: 0;
+ }
 
-body {
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: white;
-  font-family: 'Permanent Marker', cursive;
-}
-/* h1 {
+ body {
+   margin: 0;
+   height: 100vh;
+   width: 100vw;
+   background-color: white;
+   font-family: 'Open Sans', sans-serif;
+ }
+
+ /* h1 {
   font-size: 6em;
 } */
 
-form {
-  width: 25%;
-  margin: auto;
-  margin-top: 0px;
-  padding: 40px;
-  background-color: black;
-  border-radius: 5px;
-  position:absolute;
-  top: 100px;
- left: 30%;
- /* margin-left: 50px; */
-}
+ form {
+   width: 25%;
+   margin: auto;
+   margin-top: 0px;
+   padding: 40px;
+   background-color: black;
+   border-radius: 5px;
+   position: absolute;
+   top: 100px;
+   left: 30%;
+ }
 
-input {
-  margin: auto;
-}
+ input {
+   margin: auto;
+ }
 
-button {
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
+ button {
+   margin-left: 20px;
+   margin-bottom: 20px;
+ }
 
-input[type="text"] {
-  margin-bottom: 15px;
-  height: 30px;
-  text-indent: 10px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  display: block;
-}
+ input[type="text"] {
+   margin-bottom: 15px;
+   height: 30px;
+   text-indent: 10px;
+   border: 1px solid #444;
+   border-radius: 5px;
+   display: block;
+ }
+ h1 {
+  font-family: 'Permanent Marker', cursive;
+ }
 
-.header {
-  display: flex;
-  align-items: center;
-  height: 65px;
-  background: linear-gradient(90deg, #DB4B52 1.18%, #A626D3 100%);
-  color: white;
-  padding: 6px 30px 9px 30px;
-  box-shadow: 3px 3px 4px #979797
-}
+ .header {
+   display: flex;
+   align-items: center;
+   height: 65px;
+   background: linear-gradient(90deg, #DB4B52 1.18%, #A626D3 100%);
+   color: white;
+   padding: 6px 30px 9px 30px;
+   box-shadow: 3px 3px 4px #979797
+ }
 
-.header--image {
-  height: 100%;
-  margin-right: 9px;
-  margin-left: 50px;
-}
+ .header--image {
+   height: 100%;
+   margin-right: 9px;
+   margin-left: 50px;
+ }
 
-/* .header--title {
+ /* .header--title {
   font-size: 1.25rem;
   margin-right: auto;
 } */
 
-.header--project {
-  font-size: 0.75rem;
-  font-weight: 500;
-}
+ .header--project {
+   font-size: 0.75rem;
+   font-weight: 500;
+ }
 
-/* hamburger */
-/* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
-.toggler {
-  z-index: 2;
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-  cursor: pointer;
-  opacity: 0;
-}
+ /* hamburger */
+ /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
+ .toggler {
+   z-index: 2;
+   height: 50px;
+   width: 50px;
+   position: absolute;
+   top: 6px;
+   left: 5px;
+   cursor: pointer;
+   opacity: 0;
+ }
 
-.hamburger {
-  position: absolute;
-  top: 6px;
-  left: 5px;
-  height: 40px;
-  width: 40px;
-  padding: 0.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+ .hamburger {
+   position: absolute;
+   top: 6px;
+   left: 5px;
+   height: 40px;
+   width: 40px;
+   padding: 0.6rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
 
-/* CREATING THE MIDDLE LINE OF THE HAMBURGER : */
+ /* CREATING THE MIDDLE LINE OF THE HAMBURGER : */
 
-.hamburger > div{
-  position: relative;
-  top: 0;
-  left: 0;
-  background: black;
-  height: 2px;
-  width: 60%;
-  transition: all  0.4s ease;
-}
+ .hamburger>div {
+   position: relative;
+   top: 0;
+   left: 0;
+   background: black;
+   height: 2px;
+   width: 60%;
+   transition: all 0.4s ease;
+ }
 
-/* CREATING THE TOP AND BOTTOM LINES : 
+ /* CREATING THE TOP AND BOTTOM LINES : 
 TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 
-.hamburger > div::before,
-.hamburger > div::after{
-  content: '';
-  position: absolute;
-  top: -10px;
-  background: black;
-  width: 100%;
-  height: 2px;
-  transition: all  0.4s ease;
-}
+ .hamburger>div::before,
+ .hamburger>div::after {
+   content: '';
+   position: absolute;
+   top: -10px;
+   background: black;
+   width: 100%;
+   height: 2px;
+   transition: all 0.4s ease;
+ }
 
-.hamburger > div::after{
-  top: 10px;
-}
+ .hamburger>div::after {
+   top: 10px;
+ }
 
-/* IF THE TOGGLER IS IN ITS CHECKED STATE, THEN SETTING THE BACKGROUND OF THE MIDDLE LAYER TO COMPLETE BLACK AND OPAQUE :  */
+ /* IF THE TOGGLER IS IN ITS CHECKED STATE, THEN SETTING THE BACKGROUND OF THE MIDDLE LAYER TO COMPLETE BLACK AND OPAQUE :  */
 
-.toggler:checked+.hamburger>div {
-  background: rgba(0, 0, 0, 0);
-}
+ .toggler:checked+.hamburger>div {
+   background: rgba(0, 0, 0, 0);
+ }
 
-.toggler:checked+.hamburger>div::before {
-  top: 0;
-  transform: rotate(45deg);
-  background: black;
-}
+ .toggler:checked+.hamburger>div::before {
+   top: 0;
+   transform: rotate(45deg);
+   background: black;
+ }
 
-/* AND ROTATING THE TOP AND BOTTOM LINES :  */
+ /* AND ROTATING THE TOP AND BOTTOM LINES :  */
 
-.toggler:checked+.hamburger>div::after {
-  top: 0;
-  transform: rotate(135deg);
-  background: black;
-}
-
-
-/* MAIN MENU WITH THE WHITE BACKGROUND AND THE TEXT :  */
-/* This is what's causing trouble with the form position */
-.menu {
-  background: #E9E9E9;
-  width: 0;
-  height: 120px;
-  border-radius: 0 0 10px 0;
-  /* padding: 9px; */
-  /* border: 1px solid black; */
-
-  /* APPLYING TRANSITION TO THE MENU :  */
-
-  transition: all 0.4s ease;
-}
-
-/* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
-
-.toggler:checked~.menu {
-  border-radius: 0 0 10px 0;
-  padding: 9px; 
-  border: 1px solid black;
-  width: 17%;
-}
+ .toggler:checked+.hamburger>div::after {
+   top: 0;
+   transform: rotate(135deg);
+   background: black;
+ }
 
 
-/* STYLING THE LIST :  */
+ /* MAIN MENU WITH THE WHITE BACKGROUND AND THE TEXT :  */
+ /* This is what's causing trouble with the form position */
+ .menu {
+   background: #E9E9E9;
+   width: 0;
+   height: 120px;
+   border-radius: 0 0 10px 0;
+   /* padding: 9px; */
+   /* border: 1px solid black; */
 
-.menu>div>ul {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 70px;
-  padding-left: 10px;
-  font-size: 1rem;
-  
+   /* APPLYING TRANSITION TO THE MENU :  */
 
-  /* HIDDEN INITIALLY  :  */
+   transition: all 0.4s ease;
+ }
 
-  visibility: hidden;
-}
+ /* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
 
-.menu>div>ul>li {
-  list-style: none;
-  padding: .5rem;
-  padding-top: 1rem;
-}
-
-.menu>div>ul>li>a {
-  color: black;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-/* WHEN THE TOGGLER IS CHECKED, CHANGE THE VISIBILITY TO VISIBLE :  */
-
-.toggler:checked~.menu>div>ul {
-  transition: visibility 0.4s ease;
-  transition-delay: 0.1s;
-  visibility: visible;
-}
-
-.toggler:checked~.menu>div>ul>li>a:hover {
-  color: orange;
-}
+ .toggler:checked~.menu {
+   border-radius: 0 0 10px 0;
+   padding: 9px;
+   border: 1px solid black;
+   min-width: 160px;
+   width: 17%;
+ }
 
 
+ /* STYLING THE LIST :  */
+
+ .menu>div>ul {
+   display: flex;
+   flex-direction: column;
+   position: fixed;
+   top: 70px;
+   padding-left: 10px;
+   font-size: 1rem;
 
 
-/* For dropdown .select-dropdown {
+   /* HIDDEN INITIALLY  :  */
+
+   visibility: hidden;
+ }
+
+ .menu>div>ul>li {
+   list-style: none;
+   padding: .5rem;
+   padding-top: 1rem;
+ }
+
+ .menu>div>ul>li>a {
+   color: black;
+   text-decoration: none;
+   font-size: 1rem;
+ }
+
+ /* WHEN THE TOGGLER IS CHECKED, CHANGE THE VISIBILITY TO VISIBLE :  */
+
+ .toggler:checked~.menu>div>ul {
+   transition: visibility 0.4s ease;
+   transition-delay: 0.1s;
+   visibility: visible;
+ }
+
+ .toggler:checked~.menu>div>ul>li>a:hover {
+   color: orange;
+ }
+
+
+
+
+ /* For dropdown .select-dropdown {
   border-radius: 10px;
   width: 15%;
   background-color: #E6E6E6;
@@ -233,7 +237,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
   appearance: none;
 } */
 
-/* .select-dropdown,
+ /* .select-dropdown,
 .select-dropdown * {
   margin-top: 0;
   padding: 0;
