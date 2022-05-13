@@ -22,6 +22,9 @@
    margin-top: 0px;
    padding: 40px;
    background-color: black;
+   background-image: url("./images/record.png");
+   background-size:150%;
+   background-position: left;
    border-radius: 5px;
    position: absolute;
    top: 100px;
@@ -47,6 +50,11 @@
  }
  h1 {
   font-family: 'Permanent Marker', cursive;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
  }
 
  .record-list {
@@ -55,6 +63,9 @@
   margin-top: 0px;
   padding: 40px;
   background-color: black;
+  background-image: url("./images/record.png");
+  background-size:150%;
+  background-position: left;
   border-radius: 5px;
   position: absolute;
   top: 100px;
@@ -68,7 +79,7 @@
    display: flex;
    align-items: center;
    height: 65px;
-   background: linear-gradient(90deg, #DB4B52 1.18%, #A626D3 100%);
+   background: linear-gradient(90deg, #E9337D, #F8CC37, #7FA444);
    color: white;
    padding: 6px 30px 9px 30px;
    box-shadow: 3px 3px 4px #979797
