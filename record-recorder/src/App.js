@@ -8,17 +8,19 @@ function App() {
 
   const handleChange = (event) => {
     setSelectedMenu(event.target.className);
-    console.log(selectedMenu)
   }
-  const [recordList, setRecordList] = React.useState([])
-  // const [currentRecordId, setCurrentRecordId] = React.useState(
-  //   (records[0] && records[0].id) || ""
-  // )
+  const [recordList, setRecordList] = React.useState( 
+    () => JSON.parse(localStorage.getItem("recordList")) || []
+  )
+  React.useEffect(() => {
+    localStorage.setItem("recordList", JSON.stringify(recordList))
+  }, [recordList])
   
   function handleAddingNewRecordToList (newRecord)  {
-    console.log("newRecord")
+    console.log("newRecord: ", newRecord)
     setRecordList(oldList => [newRecord, ...oldList]) 
     console.log("here's the records", recordList);
+    setSelectedMenu("See All Records");
   }
   
 

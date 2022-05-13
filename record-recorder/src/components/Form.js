@@ -29,7 +29,6 @@ import PropTypes from "prop-types";
 
   function handleNewRecordFormSubmission(event) {
     event.preventDefault();
-    console.log(props)
     props.onNewRecordCreation(formData);
     // console.log("Form Data being submitted", props.CreateNewRecord)
     // props.createNewRecord(formData);
