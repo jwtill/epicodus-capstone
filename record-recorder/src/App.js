@@ -23,13 +23,7 @@ export default function App() {
     localStorage.setItem("records", JSON.stringify(records))
   }, [records]) //when 'records' is update, do this
 
-  handleAddingNewRecordToList = (newRecord) => {
-    const newMainRecordList = records.concat(newRecord);
-    setRecords({
-      mainKegList: newMainKegList,
-      formVisibleOnPage: false
-    });
-  }
+ 
   // function createNewNote() {
   //   const newRecord = {
   //     id: nanoid(),
@@ -46,7 +40,7 @@ export default function App() {
     <div>
       <Header selectedMenu={selectedMenu} handleChange={handleChange} />
       {selectedMenu === "Add a Record" && 
-      <Form onNewRecordCreation={this.handleAddingNewRecordToList}/>}
+      <Form />}
     </div>
 
   );

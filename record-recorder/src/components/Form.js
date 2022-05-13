@@ -1,5 +1,5 @@
 import React from "react"
-import { nanoid } from "nanoid"
+// import { nanoid } from "nanoid"
 
 export default function Form() {
 
@@ -28,19 +28,18 @@ export default function Form() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
     console.log("You submitted a form:", formData);
 
-    props.onNewRecordCreation({
-      title: event.target.title.value,
-      artist: event.target.artist.value,
-      genre: parseInt(event.target.genre.value),
-      year: parseInt(event.target.year.value),
-      format: parseInt(event.target.format.value),
-      value: parseInt(event.target.value.value),
-      condition: parseInt(event.target.condition.value),
-      id: nanoid()
-    });
+    // props.onNewRecordCreation({
+    //   title: event.target.title.value,
+    //   artist: event.target.artist.value,
+    //   genre: parseInt(event.target.genre.value),
+    //   year: parseInt(event.target.year.value),
+    //   format: parseInt(event.target.format.value),
+    //   value: parseInt(event.target.value.value),
+    //   condition: parseInt(event.target.condition.value),
+    //   id: nanoid()
+    // });
   }
 
   return (
