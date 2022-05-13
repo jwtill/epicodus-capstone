@@ -24,8 +24,8 @@ export default function App() {
   }, [records]) //when 'records' is update, do this
 
   handleAddingNewRecordToList = (newRecord) => {
-    const newMainRecordList = this.state.mainRecordList.concat(newRecord);
-    this.setState({
+    const newMainRecordList = records.concat(newRecord);
+    setRecords({
       mainKegList: newMainKegList,
       formVisibleOnPage: false
     });
