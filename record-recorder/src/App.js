@@ -9,13 +9,10 @@ export default function App() {
     console.log(selectedMenu)
     setSelectedMenu(event.target.className);
   };
- 
-
-
 
   return (
     <div>
-      <Header selectedMenu={selectedMenu} handleChange={handleChange}/>
+      <Header selectedMenu={selectedMenu} handleChange={handleChange} />
       {selectedMenu === "Add a Record" && <Form />}
     </div>
 
