@@ -5,16 +5,16 @@ export default function Dropdown(props) {
   return (
     <div>
       <input type="checkbox" className="toggler"></input>
-      <div className="hamburger"></div>
+      <div className="hamburger"><div></div></div>    
       <div className="menu">
         <div>
           <ul>
-            <li className="See All Records" onClick={props.handleChange}>See All Records</li>
+            <li className="See All Records" onClick={props.handleChange}><a href="#">See All Records</a></li>
             <li className="Add a Record" onClick={props.handleChange}>Add A Record</li>
             <li className="Home" onClick={props.handleChange}>Home</li>
           </ul>
         </div>
-      </div>
+      </div>    
     </div>
   );
 }
