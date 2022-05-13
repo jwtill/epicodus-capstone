@@ -1,7 +1,8 @@
 import React from "react"
-// import { nanoid } from "nanoid"
+import PropTypes from "prop-types";
 
-export default function Form() {
+// import { nanoid } from "nanoid"
+ function Form(props) {
 
   const [formData, setFormData] = React.useState(
     {
@@ -17,7 +18,7 @@ export default function Form() {
   
 
   function handleChange(event) {
-    const { name, value} = event.target
+    const { name, value } = event.target
     setFormData(prevFormData => {
       return {
         ...prevFormData,
@@ -26,10 +27,13 @@ export default function Form() {
     })
   }
 
-  function handleSubmit(event) {
+  function handleNewRecordFormSubmission(event) {
     event.preventDefault();
-    console.log("You submitted a form:", formData);
-
+    console.log(props)
+    props.onNewRecordCreation(formData);
+    // console.log("Form Data being submitted", props.CreateNewRecord)
+    // props.createNewRecord(formData);
+  
     // props.onNewRecordCreation({
     //   title: event.target.title.value,
     //   artist: event.target.artist.value,
@@ -43,7 +47,7 @@ export default function Form() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleNewRecordFormSubmission}>
       <input
         type="text"
         placeholder="title"
@@ -99,3 +103,8 @@ export default function Form() {
     </form>
   )
 }
+export default Form;
+
+Form.propTypes = {
+  onNewRecordCreation: PropTypes.func
+};

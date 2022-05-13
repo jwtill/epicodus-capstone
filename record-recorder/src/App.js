@@ -3,25 +3,28 @@ import Header from "./components/Header"
 import Form from "./components/Form"
 import { nanoid } from "nanoid"
 
-export default function App() {
+function App() {
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
   const handleChange = (event) => {
     setSelectedMenu(event.target.className);
     console.log(selectedMenu)
   }
-  const [records, setRecords] = React.useState(
-    () => JSON.parse(localStorage.getItem("records")) || []
-  )
-  const [currentRecordId, setCurrentRecordId] = React.useState(
-    (records[0] && records[0].id) || ""
-  )
+  const [recordList, setRecordList] = React.useState([])
+  // const [currentRecordId, setCurrentRecordId] = React.useState(
+  //   (records[0] && records[0].id) || ""
+  // )
+  
+  function handleAddingNewRecordToList (newRecord)  {
+    console.log("newRecord")
+    setRecordList(oldList => [newRecord, ...oldList]) 
+    console.log("here's the records", recordList);
+  }
+  
 
-  console.log(records);
-
-  React.useEffect(() => {
-    localStorage.setItem("records", JSON.stringify(records))
-  }, [records]) //when 'records' is update, do this
+  // React.useEffect(() => {
+  //   localStorage.setItem("records", JSON.stringify(records))
+  // }, [records]) //when 'records' is update, do this
 
  
   // function createNewNote() {
@@ -40,10 +43,12 @@ export default function App() {
     <div>
       <Header selectedMenu={selectedMenu} handleChange={handleChange} />
       {selectedMenu === "Add a Record" && 
-      <Form />}
+      <Form  onNewRecordCreation={handleAddingNewRecordToList} />}
     </div>
 
   );
 }
 
+export default App;
 
+// onNewRecordCreation={handleAddingNewRecordToList}
