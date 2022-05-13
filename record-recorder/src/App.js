@@ -6,9 +6,9 @@ export default function App() {
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
   const handleChange = (event) => {
-    console.log(selectedMenu)
     setSelectedMenu(event.target.className);
-  };
+    console.log(selectedMenu)
+  }
 
   return (
     <div>

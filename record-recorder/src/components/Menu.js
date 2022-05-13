@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export default function Dropdown(props) {
+export default function Menu(props) {
   return (
     <div>
       <input type="checkbox" className="toggler"></input>
@@ -9,7 +9,7 @@ export default function Dropdown(props) {
       <div className="menu">
         <div>
           <ul>
-            <li className="See All Records" onClick={props.handleChange}><a href="#">See All Records</a></li>
+            <li className="See All Records" onClick={props.handleChange}>See All Records</li>
             <li className="Add a Record" onClick={props.handleChange}>Add A Record</li>
             <li className="Home" onClick={props.handleChange}>Home</li>
           </ul>
