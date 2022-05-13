@@ -10,7 +10,7 @@ export default function Header(props) {
           src={RecordImg} alt=""
           className="header--image"
         />
-        <h1 className="header--title">Record Collector</h1>
+        <h1 className="header--title">Record Recorder</h1>
       </header>
       <Menu selectedMenu={props.selectedMenu} handleChange={props.handleChange} />
     </div>
