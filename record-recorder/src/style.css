@@ -9,7 +9,11 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: white;
+  font-family: 'Permanent Marker', cursive;
 }
+/* h1 {
+  font-size: 6em;
+} */
 
 form {
   width: 25%;
@@ -47,6 +51,7 @@ input[type="text"] {
   background: linear-gradient(90deg, #DB4B52 1.18%, #A626D3 100%);
   color: white;
   padding: 6px 30px 9px 30px;
+  box-shadow: 3px 3px 4px #979797
 }
 
 .header--image {
@@ -55,10 +60,10 @@ input[type="text"] {
   margin-left: 50px;
 }
 
-.header--title {
+/* .header--title {
   font-size: 1.25rem;
   margin-right: auto;
-}
+} */
 
 .header--project {
   font-size: 0.75rem;
@@ -144,9 +149,12 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 /* MAIN MENU WITH THE WHITE BACKGROUND AND THE TEXT :  */
 /* This is what's causing trouble with the form position */
 .menu {
-  background: grey;
+  background: #E9E9E9;
   width: 0;
   height: 120px;
+  border-radius: 0 0 10px 0;
+  /* padding: 9px; */
+  /* border: 1px solid black; */
 
   /* APPLYING TRANSITION TO THE MENU :  */
 
@@ -156,7 +164,10 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 /* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
 
 .toggler:checked~.menu {
-  width: 15%;
+  border-radius: 0 0 10px 0;
+  padding: 9px; 
+  border: 1px solid black;
+  width: 17%;
 }
 
 
@@ -168,6 +179,8 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
   position: fixed;
   top: 70px;
   padding-left: 10px;
+  font-size: 1rem;
+  
 
   /* HIDDEN INITIALLY  :  */
 
@@ -176,14 +189,14 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 
 .menu>div>ul>li {
   list-style: none;
-  padding: 0.5rem;
+  padding: .5rem;
+  padding-top: 1rem;
 }
 
 .menu>div>ul>li>a {
   color: black;
   text-decoration: none;
-  font-size: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
 }
 
 /* WHEN THE TOGGLER IS CHECKED, CHANGE THE VISIBILITY TO VISIBLE :  */
