@@ -8,6 +8,7 @@ export default function AllRecords(props) {
         {props.records.map((record) =>
     
             <Record
+              whenRecordClicked={props.onRecordSelection}
               title={record.title}
               artist={record.artist}
               genre={record.genre}
@@ -15,6 +16,8 @@ export default function AllRecords(props) {
               format={record.format}
               value={record.value}
               condition={record.condition}
+              id={record.id}
+              key={record.id}
             />
          
         )}

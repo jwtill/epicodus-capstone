@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types";
+import { nanoid } from "nanoid"
 
-// import { nanoid } from "nanoid"
- function Form(props) {
+function Form(props) {
 
   const [formData, setFormData] = React.useState(
     {
@@ -12,17 +12,18 @@ import PropTypes from "prop-types";
       year: "",
       format: "",
       value: "",
-      condition: ""
+      condition: "",
+      id: nanoid()
     }
   )
-  
+
 
   function handleChange(event) {
     const { name, value } = event.target
     setFormData(prevFormData => {
       return {
         ...prevFormData,
-        [name] : value
+        [name]: value
       }
     })
   }
@@ -30,19 +31,6 @@ import PropTypes from "prop-types";
   function handleNewRecordFormSubmission(event) {
     event.preventDefault();
     props.onNewRecordCreation(formData);
-    // console.log("Form Data being submitted", props.CreateNewRecord)
-    // props.createNewRecord(formData);
-  
-    // props.onNewRecordCreation({
-    //   title: event.target.title.value,
-    //   artist: event.target.artist.value,
-    //   genre: parseInt(event.target.genre.value),
-    //   year: parseInt(event.target.year.value),
-    //   format: parseInt(event.target.format.value),
-    //   value: parseInt(event.target.value.value),
-    //   condition: parseInt(event.target.condition.value),
-    //   id: nanoid()
-    // });
   }
 
   return (
@@ -96,9 +84,8 @@ import PropTypes from "prop-types";
         name="condition"
         value={formData.condition}
       />
-      
+  
       <button>Submit</button>
-
     </form>
   )
 }

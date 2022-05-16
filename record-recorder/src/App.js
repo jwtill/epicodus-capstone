@@ -7,47 +7,40 @@ import { nanoid } from "nanoid"
 function App() {
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
-  const handleChange = (event) => {
-    setSelectedMenu(event.target.className);
-  }
   const [recordList, setRecordList] = React.useState( 
     () => JSON.parse(localStorage.getItem("recordList")) || []
   )
+
+  const [selectedRecord, setSelectedRecord] = React.useState(
+    () => JSON.parse(localStorage.getItem("selectedRecord")) || []
+  )
+
   React.useEffect(() => {
     localStorage.setItem("recordList", JSON.stringify(recordList))
   }, [recordList])
-  
-  function handleAddingNewRecordToList (newRecord)  {
-    console.log("newRecord: ", newRecord)
-    setRecordList(oldList => [newRecord, ...oldList]) 
-    console.log("here's the records", recordList);
-    setSelectedMenu("See All Records");
+
+  const handleChange = (event) => {
+    setSelectedMenu(event.target.className);
   }
   
+  function handleAddingNewRecordToList (newRecord)  {
+    setRecordList(oldList => [newRecord, ...oldList]) 
+    setSelectedMenu("See All Records");
+  }
 
-  // React.useEffect(() => {
-  //   localStorage.setItem("records", JSON.stringify(records))
-  // }, [records]) //when 'records' is update, do this
-
- 
-  // function createNewNote() {
-  //   const newRecord = {
-  //     id: nanoid(),
-  //     body: "# Type your markdown note's title here"
-  //   }
-  //   setRecords(prevRecords => [newRecord, ...prevRecords])
-  //   setCurrentRecordId(newRecord.id)
-  // }
-
- 
-
+  function handleChangingSelectedRecord(id)  {
+    const selectedRecord = recordList.filter(record => record.id === id)[0];
+    setSelectedRecord({ selectedRecord: selectedRecord });
+    console.log("Selected Record: ", selectedRecord)
+  }
+  
 
   return (
     <div>
       <Header selectedMenu={selectedMenu} handleChange={handleChange} />
       {selectedMenu === "Add a Record" && 
       <Form  onNewRecordCreation={handleAddingNewRecordToList} />}
-      {selectedMenu === "See All Records" && <AllRecords records={recordList} />}
+      {selectedMenu === "See All Records" && <AllRecords records={recordList} onRecordSelection={handleChangingSelectedRecord} />}
     </div>
 
   );
@@ -55,4 +48,3 @@ function App() {
 
 export default App;
 
-// onNewRecordCreation={handleAddingNewRecordToList}

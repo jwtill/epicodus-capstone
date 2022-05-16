@@ -6,9 +6,8 @@ function Record(props) {
   return (
     <React.Fragment>
       <li>
-        <div>
+        <div onClick={() => props.whenRecordClicked(props.id)}>
           <h2>{props.title} from {props.artist}</h2>
-          {/* <p>{props.pints} pints left</p> */}
         </div>
       </li>
     </React.Fragment>
@@ -22,7 +21,9 @@ Record.propTypes = {
   year: PropTypes.string,
   format: PropTypes.string,
   value: PropTypes.string,
-  condition: PropTypes.string
+  condition: PropTypes.string,
+  id: PropTypes.string,
+  whenRecordClicked: PropTypes.func
 };
 
 export default Record;
