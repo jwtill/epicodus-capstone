@@ -2,7 +2,7 @@ import React from "react"
 import Header from "./components/Header"
 import Form from "./components/Form"
 import AllRecords from "./components/AllRecords"
-import { nanoid } from "nanoid"
+import RecordDetail from "./components/RecordDetail"
 
 function App() {
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
@@ -12,7 +12,7 @@ function App() {
   )
 
   const [selectedRecord, setSelectedRecord] = React.useState(
-    () => JSON.parse(localStorage.getItem("selectedRecord")) || []
+    () => JSON.parse(localStorage.getItem("selectedRecord")) || {}
   )
 
   React.useEffect(() => {
@@ -29,9 +29,10 @@ function App() {
   }
 
   function handleChangingSelectedRecord(id)  {
-    const selectedRecord = recordList.filter(record => record.id === id)[0];
-    setSelectedRecord({ selectedRecord: selectedRecord });
-    console.log("Selected Record: ", selectedRecord)
+    const clickedRecord = recordList.filter(record => record.id === id)[0];
+    setSelectedRecord(clickedRecord);
+    // console.log("handle changing selected record: ", selectedRecord["title"])
+    setSelectedMenu("Record Detail");
   }
   
 
@@ -40,7 +41,10 @@ function App() {
       <Header selectedMenu={selectedMenu} handleChange={handleChange} />
       {selectedMenu === "Add a Record" && 
       <Form  onNewRecordCreation={handleAddingNewRecordToList} />}
-      {selectedMenu === "See All Records" && <AllRecords records={recordList} onRecordSelection={handleChangingSelectedRecord} />}
+
+      {selectedMenu === "See All Records" && <AllRecords records={recordList} onRecordSelection={handleChangingSelectedRecord} onClickingRecord={handleChange}/>}
+
+      {selectedMenu === "Record Detail" && <RecordDetail record={selectedRecord} onRecordSelection={handleChangingSelectedRecord} />}
     </div>
 
   );
