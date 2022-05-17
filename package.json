@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "firebase": "^9.8.1",
-    "nanoid": "^3.3.4"
+    "nanoid": "^3.3.4",
+    "react-redux-firebase": "^3.11.0",
+    "redux-firestore": "^1.0.0"
   }
 }
