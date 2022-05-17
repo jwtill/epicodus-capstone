@@ -238,16 +238,17 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
    padding: 1rem;
    cursor: pointer;
    border-radius: 5px;
+
  }
  .menu>div>ul>li:hover {
- background-color: #D9D9D9;
+ /* background-color: #D9D9D9; */
 }
-
- .menu>div>ul>li>a {
-   color: black;
-   text-decoration: none;
-   font-size: 1rem;
+.menu>div>ul>li:active {
+  background-color: #D9D9D9;
+  border: 1px solid black;
  }
+
+ 
 
  /* WHEN THE TOGGLER IS CHECKED, CHANGE THE VISIBILITY TO VISIBLE :  */
 
@@ -268,8 +269,8 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
    color: white;
    padding: 10px;
    margin-top: -100px;
-   width: 200px;
-   height: 200px;
+   width: 400px;
+   height: 400px;
    background-image: url("./images/record.png");
    background-size: 100%;
    box-shadow: 3px 3px 4px #979797; 
