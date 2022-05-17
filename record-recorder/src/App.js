@@ -6,18 +6,8 @@ import RecordDetail from "./components/RecordDetail"
 import { db } from './services/firestore'; // update with your path to firestore config
 import { doc, setDoc } from "firebase/firestore";
 
-// export const createRecord = async (recordList) => {
-//   await setDoc(doc(db, 'recordList', recordList[0].id), recordList);
-// };
-
-
-
 
 export default function App() {
-
- 
-    
-
 
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
@@ -36,17 +26,11 @@ export default function App() {
     () => JSON.parse(localStorage.getItem("term")) || ""
   )
 
-  React.useEffect (() => {
 
-      // setDoc(doc(db, "recordList", "fish"), recordList, 
-
-      // [recordList])});
-      
-
-
-  // const addRecordToDb = async (record) => {
-  //   await setDoc(doc(db, "recordList", record.title), record
-  // )};
+  React.useEffect(() => {
+    setDoc(doc(db, "records", "recordList"), {recordList}
+  )}, [recordList])
+  
 
   const handleChange = (event) => {
     setSelectedMenu(event.target.className);
@@ -54,9 +38,7 @@ export default function App() {
 
   function handleAddingNewRecordToList(newRecord) {
     setRecordList(oldList => [newRecord, ...oldList])
-    // createRecord(newRecord);
     setSelectedMenu("See All Records");
-
   }
 
   function handleChangingSelectedRecord(id) {
