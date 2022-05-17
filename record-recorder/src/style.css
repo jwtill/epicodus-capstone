@@ -87,6 +87,9 @@
   color: white;
   cursor: pointer;
 }
+.record-list > h1 {
+  color: white;
+}
 
  .header {
    display: flex;

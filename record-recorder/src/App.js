@@ -4,7 +4,8 @@ import Form from "./components/Form"
 import AllRecords from "./components/AllRecords"
 import RecordDetail from "./components/RecordDetail"
 
-function App() {
+export default function App() {
+
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
   const [recordList, setRecordList] = React.useState(
@@ -14,8 +15,12 @@ function App() {
   const [selectedRecord, setSelectedRecord] = React.useState(
     () => JSON.parse(localStorage.getItem("selectedRecord")) || {}
   )
+
   const [likeRecords, setLikeRecords] = React.useState(
     () => JSON.parse(localStorage.getItem("likeRecords")) || []
+  )
+  const [term, setTerm] = React.useState(
+    () => JSON.parse(localStorage.getItem("term")) || ""
   )
 
   React.useEffect(() => {
@@ -37,20 +42,12 @@ function App() {
     setSelectedMenu("Record Detail");
   }
 
-  //generates new list of records, filtering from main list
-  //term=string`
   function handleReturningSimilarRecords(term, key) {
-    // console.log(term, key)
     const likeRecords = recordList.filter(record => record[key] === term);
+    setTerm(term);
     setLikeRecords(likeRecords);
-    console.log(likeRecords);
     setSelectedMenu("See Related Records");
-    
-    // console.log("Like Records: ", likeRecords);
-    // return likeRecords;
-    // console.log("handle changing selected record: ", selectedRecord["title"])
   }
-
 
   return (
     <div>
@@ -62,13 +59,12 @@ function App() {
 
       {selectedMenu === "Record Detail" && <RecordDetail record={selectedRecord} onSelectingTerm={handleReturningSimilarRecords} />}
 
-     
-      {selectedMenu === "See Related Records" && <AllRecords records={likeRecords} onRecordSelection={handleChangingSelectedRecord} onClickingRecord={handleChange} />}
+      {selectedMenu === "See Related Records" && <AllRecords term={term} records={likeRecords} onRecordSelection={handleChangingSelectedRecord} onClickingRecord={handleChange} />}
       
     </div>
 
   );
 }
 
-export default App;
+
 
