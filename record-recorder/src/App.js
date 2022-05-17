@@ -4,33 +4,30 @@ import Form from "./components/Form"
 import AllRecords from "./components/AllRecords"
 import RecordDetail from "./components/RecordDetail"
 import { db } from './services/firestore'; // update with your path to firestore config
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 
 export default function App() {
+  const docRef = doc(db, "records", "recordList");
+  const docSnap = getDoc(docRef);
+  console.log("db", docSnap.data);
 
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
-  const [recordList, setRecordList] = React.useState(
-    () => JSON.parse(localStorage.getItem("recordList")) || []
-  )
+  const [recordList, setRecordList] = React.useState(() => docSnap.data || []);
 
-  const [selectedRecord, setSelectedRecord] = React.useState(
-    () => JSON.parse(localStorage.getItem("selectedRecord")) || {}
-  )
+  const [selectedRecord, setSelectedRecord] = React.useState({});
 
-  const [likeRecords, setLikeRecords] = React.useState(
-    () => JSON.parse(localStorage.getItem("likeRecords")) || []
-  )
-  const [term, setTerm] = React.useState(
-    () => JSON.parse(localStorage.getItem("term")) || ""
-  )
+  const [likeRecords, setLikeRecords] = React.useState([]);
+
+  const [term, setTerm] = React.useState("");
 
 
   React.useEffect(() => {
-    setDoc(doc(db, "records", "recordList"), {recordList}
-  )}, [recordList])
-  
+    console.log("useEffect", recordList);
+    setDoc(doc(db, "records", "recordList"), { recordList })
+  }, [recordList])
+
 
   const handleChange = (event) => {
     setSelectedMenu(event.target.className);
@@ -44,7 +41,6 @@ export default function App() {
   function handleChangingSelectedRecord(id) {
     const clickedRecord = recordList.filter(record => record.id === id)[0];
     setSelectedRecord(clickedRecord);
-
     setSelectedMenu("Record Detail");
   }
 
