@@ -32,3 +32,6 @@ https://github.com/jwtill/react-todo-app
 
 # 5/13/22
 2:09 https://www.geeksforgeeks.org/how-to-create-a-form-in-react/
+
+# 5/17/22
+1:00 https://blog.logrocket.com/how-to-use-react-hooks-firebase-firestore/
