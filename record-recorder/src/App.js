@@ -31,28 +31,30 @@ function App() {
   function handleChangingSelectedRecord(id)  {
     const clickedRecord = recordList.filter(record => record.id === id)[0];
     setSelectedRecord(clickedRecord);
-    // console.log("handle changing selected record: ", selectedRecord["title"])
     setSelectedMenu("Record Detail");
   }
 
+  //generates new list of records, filtering from main list
+  //term=string`
   function handleReturningSimilarRecords(term)  {
-    const likeRecords = recordList.filter(record => record.artist === term);
-    return likeRecords;
+    // console.log(term)
+    console.log(recordList)
+    const likeRecords = recordList.filter(record => record.term === term);
+    // console.log(likeRecords);
+    // return likeRecords;
     // console.log("handle changing selected record: ", selectedRecord["title"])
-    // setSelectedMenu("Record Detail");
   }
   
 
   return (
     <div>
-      {console.log(handleReturningSimilarRecords("The Beatles"))}
       <Header selectedMenu={selectedMenu} handleChange={handleChange} />
       {selectedMenu === "Add a Record" && 
       <Form  onNewRecordCreation={handleAddingNewRecordToList} />}
 
       {selectedMenu === "See All Records" && <AllRecords records={recordList} onRecordSelection={handleChangingSelectedRecord} onClickingRecord={handleChange}/>}
 
-      {selectedMenu === "Record Detail" && <RecordDetail record={selectedRecord} onRecordSelection={handleChangingSelectedRecord} />}
+      {selectedMenu === "Record Detail" && <RecordDetail record={selectedRecord} onSelectingTerm={handleReturningSimilarRecords} />}
     </div>
 
   );

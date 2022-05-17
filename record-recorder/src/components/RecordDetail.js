@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function RecordDetail(props) {
-  const { record } = props;
-  console.log("Record Detail", record);
+  const { record, onSelectingTerm  } = props;
 
   return (
     <div className="detail">
-      <div>{record.title}</div>
-      <div>{record.artist}</div>
+      <div onClick={() => onSelectingTerm(record.title)}>{record.title}</div>
+      <div onClick={() => onSelectingTerm(record.artist)}>
+        {console.log("onclick: ", record.artist)}
+        {record.artist}</div>
       <div>{record.genre}</div>
       <div>{record.year}</div>
       <div>{record.format}</div>
@@ -19,7 +20,9 @@ export default function RecordDetail(props) {
 }
 
 
+
 RecordDetail.propTypes = {
-  record: PropTypes.object
+  record: PropTypes.object,
+  onSelectingTerm: PropTypes.func
 };
 
