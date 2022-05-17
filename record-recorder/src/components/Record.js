@@ -8,7 +8,6 @@ function Record(props) {
       <li>
         <div onClick={() => props.whenRecordClicked(props.id)}>
           <h2>{props.title} from {props.artist}</h2>
-          <hr />
         </div>
       </li>
     </React.Fragment>
