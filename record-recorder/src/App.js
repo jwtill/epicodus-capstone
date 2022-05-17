@@ -15,9 +15,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 export default function App() {
 
-  const createRecord = async (record) => {
-    await setDoc(doc(db, "recordList", record.title), record
-  )};
+ 
     
 
 
@@ -38,9 +36,17 @@ export default function App() {
     () => JSON.parse(localStorage.getItem("term")) || ""
   )
 
-  React.useEffect(() => {
-    localStorage.setItem("recordList", JSON.stringify(recordList))
-  }, [recordList])
+  React.useEffect (() => {
+
+      // setDoc(doc(db, "recordList", "fish"), recordList, 
+
+      // [recordList])});
+      
+
+
+  // const addRecordToDb = async (record) => {
+  //   await setDoc(doc(db, "recordList", record.title), record
+  // )};
 
   const handleChange = (event) => {
     setSelectedMenu(event.target.className);
@@ -48,7 +54,7 @@ export default function App() {
 
   function handleAddingNewRecordToList(newRecord) {
     setRecordList(oldList => [newRecord, ...oldList])
-    createRecord(newRecord);
+    // createRecord(newRecord);
     setSelectedMenu("See All Records");
 
   }
