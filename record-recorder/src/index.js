@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style.css';
 import App from './App';
-import firebase from "./firebase";
+import firebase from "./services/firebase";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
