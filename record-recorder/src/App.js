@@ -6,22 +6,19 @@ import RecordDetail from "./components/RecordDetail"
 import { db } from './services/firestore'; // update with your path to firestore config
 import { doc, setDoc } from "firebase/firestore";
 
-export const createRecord = async (recordList) => {
-  await setDoc(doc(db, 'recordList', recordList[0].id), recordList);
-};
+// export const createRecord = async (recordList) => {
+//   await setDoc(doc(db, 'recordList', recordList[0].id), recordList);
+// };
 
 
 
 
 export default function App() {
 
-  const createCity = async () =>
-    await setDoc(doc(db, "cities", "LA"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA"
-    });
-    createCity();
+  const createRecord = async (record) => {
+    await setDoc(doc(db, "recordList", record.title), record
+  )};
+    
 
 
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
@@ -51,7 +48,7 @@ export default function App() {
 
   function handleAddingNewRecordToList(newRecord) {
     setRecordList(oldList => [newRecord, ...oldList])
-    createRecord(recordList);
+    createRecord(newRecord);
     setSelectedMenu("See All Records");
 
   }
