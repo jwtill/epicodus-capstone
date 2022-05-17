@@ -34,10 +34,18 @@ function App() {
     // console.log("handle changing selected record: ", selectedRecord["title"])
     setSelectedMenu("Record Detail");
   }
+
+  function handleReturningSimilarRecords(term)  {
+    const likeRecords = recordList.filter(record => record.artist === term);
+    return likeRecords;
+    // console.log("handle changing selected record: ", selectedRecord["title"])
+    // setSelectedMenu("Record Detail");
+  }
   
 
   return (
     <div>
+      {console.log(handleReturningSimilarRecords("The Beatles"))}
       <Header selectedMenu={selectedMenu} handleChange={handleChange} />
       {selectedMenu === "Add a Record" && 
       <Form  onNewRecordCreation={handleAddingNewRecordToList} />}

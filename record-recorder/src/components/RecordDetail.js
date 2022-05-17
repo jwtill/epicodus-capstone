@@ -6,30 +6,15 @@ export default function RecordDetail(props) {
   console.log("Record Detail", record);
 
   return (
-    <React.Fragment>
-      <table>
-        <tbody>
-          <tr>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Genre</th>
-            <th>Year</th>
-            <th>Format</th>
-            <th>Value</th>
-            <th>Condition</th>
-          </tr>
-          <tr>
-            <td>{record.title}</td> 
-            <td>{record.artist}</td>
-            <td>{record.genre}</td>
-            <td>{record.year}</td>
-            <td>{record.format}</td>
-            <td>{record.value}</td>
-            <td>{record.condition}</td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
+    <div className="detail">
+      <div>{record.title}</div>
+      <div>{record.artist}</div>
+      <div>{record.genre}</div>
+      <div>{record.year}</div>
+      <div>{record.format}</div>
+      <div>{record.value}</div>
+      <div>{record.condition}</div>
+    </div>
   );
 }
 
