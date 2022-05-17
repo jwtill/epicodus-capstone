@@ -8,26 +8,39 @@ export default function RecordDetail(props) {
   return (
     <div className="detail">
       <div
-        onClick={() => onSelectingTerm(record.title, recordKey[0])}>{record.title}
+        onClick={() => onSelectingTerm(record.title, recordKey[0])}
+      >
+        {record.title}
       </div>
       <div
-        onClick={() => onSelectingTerm(record.artist, recordKey[1])}>{record.artist}
+        onClick={() => onSelectingTerm(record.artist, recordKey[1])}
+      >
+        {record.artist}
       </div>
       <div
-        onClick={() => onSelectingTerm(record.genre, recordKey[2])}>{record.genre}
+        onClick={() => onSelectingTerm(record.genre, recordKey[2])}
+      >
+        {record.genre}
       </div>
       <div
-        onClick={() => onSelectingTerm(record.year, recordKey[3])}>
+        onClick={() => onSelectingTerm(record.year, recordKey[3])}
+      >
         {record.year}
       </div>
       <div
-        onClick={() => onSelectingTerm(record.format, recordKey[4])}>{record.format}
+        onClick={() => onSelectingTerm(record.format, recordKey[4])}
+      >
+        {record.format}
       </div>
       <div
-        onClick={() => onSelectingTerm(record.value, recordKey[5])}>{record.value}
+        onClick={() => onSelectingTerm(record.value, recordKey[5])}
+      >
+        {record.value}
       </div>
       <div
-        onClick={() => onSelectingTerm(record.condition, recordKey[6])}>{record.condition}
+        onClick={() => onSelectingTerm(record.condition, recordKey[6])}
+      >
+        {record.condition}
       </div>
     </div>
   );

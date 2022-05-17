@@ -14,6 +14,9 @@ function App() {
   const [selectedRecord, setSelectedRecord] = React.useState(
     () => JSON.parse(localStorage.getItem("selectedRecord")) || {}
   )
+  const [likeRecords, setLikeRecords] = React.useState(
+    () => JSON.parse(localStorage.getItem("likeRecords")) || []
+  )
 
   React.useEffect(() => {
     localStorage.setItem("recordList", JSON.stringify(recordList))
@@ -37,9 +40,13 @@ function App() {
   //generates new list of records, filtering from main list
   //term=string`
   function handleReturningSimilarRecords(term, key) {
-    console.log(term, key)
+    // console.log(term, key)
     const likeRecords = recordList.filter(record => record[key] === term);
-    console.log("Like Records: ", likeRecords);
+    setLikeRecords(likeRecords);
+    console.log(likeRecords);
+    setSelectedMenu("See Related Records");
+    
+    // console.log("Like Records: ", likeRecords);
     // return likeRecords;
     // console.log("handle changing selected record: ", selectedRecord["title"])
   }
@@ -54,6 +61,10 @@ function App() {
       {selectedMenu === "See All Records" && <AllRecords records={recordList} onRecordSelection={handleChangingSelectedRecord} onClickingRecord={handleChange} />}
 
       {selectedMenu === "Record Detail" && <RecordDetail record={selectedRecord} onSelectingTerm={handleReturningSimilarRecords} />}
+
+     
+      {selectedMenu === "See Related Records" && <AllRecords records={likeRecords} onRecordSelection={handleChangingSelectedRecord} onClickingRecord={handleChange} />}
+      
     </div>
 
   );

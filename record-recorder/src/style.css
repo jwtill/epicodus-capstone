@@ -262,3 +262,9 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
    background-size: 100%;
    box-shadow: 3px 3px 4px #979797; 
  }
+
+ .detail > div:hover {
+    cursor: pointer;
+    color: red;
+ }
+ 
