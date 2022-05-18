@@ -57,7 +57,7 @@ export default function App() {
     setRecordList(oldList => [newRecord, ...oldList])
 
     setDoc(doc(db, "record-collection", "recordList"), {
-      recordList
+      newRecord
     });
 
     // const recordRef = doc(db, 'record-collection', 'recordList');
