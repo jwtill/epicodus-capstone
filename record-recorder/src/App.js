@@ -44,7 +44,7 @@ export default function App() {
       state: 'CA',
       country: 'USA'
     };
-    const res = await db.collection('record-collection').doc('LA').set(data);
+    // const res = await db.collection('record-collection').doc('LA').set(data);
     console.log(docSnap.data);
     setSelectedMenu("See All Records");
   }
