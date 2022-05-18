@@ -6,7 +6,7 @@ import RecordDetail from "./components/RecordDetail"
 import { db } from './services/firestore';
 // import { initializeApp } from "firebase/app";
 // import { getFirestore } from "firebase/firestore";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 
@@ -17,19 +17,22 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 
 export default function App() {
 
-   async function getData() {
-    const querySnapshot = await getDocs(collection(db, "cities"));
-    let result = [];
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-      result.push(doc);
-    });
-    return result;
-  }    
+  async function getData() {
+    const docRef = doc(db, "record-collection", "recordList");
+    const docSnap = await getDoc(docRef);
 
-  const currentSavedRecords = getData();
-  console.log(currentSavedRecords)
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
+  
+
+  const currentRecordData = getData();
+  console.log("hey", currentRecordData);
+
 
 
 
@@ -37,7 +40,7 @@ export default function App() {
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
   const [recordList, setRecordList] = React.useState([]);
-  console.log("inital", recordList);
+
 
   const [selectedRecord, setSelectedRecord] = React.useState({});
 
@@ -56,12 +59,13 @@ export default function App() {
   function handleAddingNewRecordToList(newRecord) {
     setRecordList(oldList => [newRecord, ...oldList])
 
-    setDoc(doc(db, "record-collection", "recordList"), {
-      newRecord
-    });
+    // updateDoc(doc(db, "record-collection", "recordList"), {
+    //   newRecord
+    // });
+    const recordRef = doc(db, 'record-collection', 'recordList');
+    setDoc(recordRef, { ...recordList }, { merge: true });
 
-    // const recordRef = doc(db, 'record-collection', 'recordList');
-    // setDoc(recordRef, { capital: true }, { merge: true });
+
 
     setSelectedMenu("See All Records");
   }
