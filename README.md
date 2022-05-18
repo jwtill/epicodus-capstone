@@ -35,3 +35,6 @@ https://github.com/jwtill/react-todo-app
 
 # 5/17/22
 1:00 https://blog.logrocket.com/how-to-use-react-hooks-firebase-firestore/
+
+# 5/18/22
+3:00 https://www.youtube.com/watch?v=Ofux_4c94FI&t=103s
