@@ -22,11 +22,16 @@ export default function App() {
     let results = [];
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+  
       results.push(doc.data());
     });
-    console.log(results);
+
   }
+  // getData().then(
+  //   function(results) {
+  //     return results;
+  //   }
+  // )
   
   const currentRecordData = getData();
   console.log("results: ", currentRecordData);
