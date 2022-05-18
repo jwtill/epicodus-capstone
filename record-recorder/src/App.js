@@ -18,20 +18,18 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 export default function App() {
 
   async function getData() {
-    const docRef = doc(db, "record-collection", "recordList");
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      return docSnap.data();
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
+    const querySnapshot = await getDocs(collection(db, "record-collection"));
+    let results = [];
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      results.push(doc.data());
+    });
+    console.log(results);
   }
   
-
   const currentRecordData = getData();
-  console.log("hey", currentRecordData);
+  console.log("results: ", currentRecordData);
 
 
 
