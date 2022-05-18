@@ -17,24 +17,22 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 
 export default function App() {
 
-  async function getData() {
-    const querySnapshot = await getDocs(collection(db, "record-collection"));
-    let results = [];
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-  
-      results.push(doc.data());
-    });
+  // async function getData() {
+  //   const querySnapshot = await getDocs(collection(db, "record-collection"));
+  //   let results = [];
+  //   querySnapshot.forEach((doc) => {
+  //     results.push(doc.data());
+  //   });
 
-  }
+  // }
   // getData().then(
   //   function(results) {
   //     return results;
   //   }
   // )
-  
-  const currentRecordData = getData();
-  console.log("results: ", currentRecordData);
+
+  // const currentRecordData = getData();
+  // console.log("results: ", currentRecordData);
 
 
 
@@ -67,11 +65,33 @@ export default function App() {
     // });
     const recordRef = doc(db, 'record-collection', 'recordList');
     setDoc(recordRef, { ...recordList }, { merge: true });
-
-
-
     setSelectedMenu("See All Records");
   }
+
+  // React.useEffect(() => {
+  //   console.log("UseEffect Running");
+  //   async function getData() {
+  //     const list = [];
+  //     const querySnapshot = await getDocs(collection(db, "record-collection"));
+  //     querySnapshot.forEach(doc => {
+  //       console.log(doc.data());
+  //       const { title, artist, genre, year, format, value, condition } = doc.data();
+  //       list.push({
+  //         title, 
+  //         artist, 
+  //         genre, 
+  //         year, 
+  //         format, 
+  //         value, 
+  //         condition
+  //       });
+  //     })
+  //     console.log("the list:", list);
+  //     setRecordList(list);
+  //   };
+  //   getData();
+  // }, []
+  // );
 
 
 
