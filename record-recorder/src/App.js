@@ -8,13 +8,15 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 
 
 export default function App() {
+
   const docRef = doc(db, "records", "recordList");
   const docSnap = getDoc(docRef);
-  console.log("db", docSnap.data);
+
+  // console.log(docSnap.data);
 
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
-  const [recordList, setRecordList] = React.useState(() => docSnap.data || []);
+  const [recordList, setRecordList] = React.useState(docSnap.data || []);
 
   const [selectedRecord, setSelectedRecord] = React.useState({});
 
@@ -22,11 +24,11 @@ export default function App() {
 
   const [term, setTerm] = React.useState("");
 
-
-  React.useEffect(() => {
-    console.log("useEffect", recordList);
-    setDoc(doc(db, "records", "recordList"), { recordList })
-  }, [recordList])
+  
+  // React.useEffect(() => {
+  //   console.log("useEffect", recordList);
+  //   setDoc(doc(db, "records", "recordList"), { recordList })
+  // }, [recordList])
 
 
   const handleChange = (event) => {
@@ -35,6 +37,15 @@ export default function App() {
 
   function handleAddingNewRecordToList(newRecord) {
     setRecordList(oldList => [newRecord, ...oldList])
+    console.log(recordList);
+    // setDoc(doc(db, "record-collection", "recordList"), { recordList });
+    const data = {
+      name: 'Los Angeles',
+      state: 'CA',
+      country: 'USA'
+    };
+    const res = await db.collection('record-collection').doc('LA').set(data);
+    console.log(docSnap.data);
     setSelectedMenu("See All Records");
   }
 
