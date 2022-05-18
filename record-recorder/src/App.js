@@ -17,18 +17,19 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 
 export default function App() {
 
-  async function getData() {
-    const q = query(collection(db, "record-collection"), where("title", "==", "shrimp"));
-
-    const querySnapshot = await getDocs(q);
+   async function getData() {
+    const querySnapshot = await getDocs(collection(db, "cities"));
+    let result = [];
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
+      result.push(doc);
     });
+    return result;
+  }    
 
-  }
-
-  console.log(getData())
+  const currentSavedRecords = getData();
+  console.log(currentSavedRecords)
 
 
 
@@ -36,6 +37,7 @@ export default function App() {
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
   const [recordList, setRecordList] = React.useState([]);
+  console.log("inital", recordList);
 
   const [selectedRecord, setSelectedRecord] = React.useState({});
 
