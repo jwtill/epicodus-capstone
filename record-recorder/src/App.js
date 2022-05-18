@@ -3,26 +3,35 @@ import Header from "./components/Header"
 import Form from "./components/Form"
 import AllRecords from "./components/AllRecords"
 import RecordDetail from "./components/RecordDetail"
-import { db } from './services/firestore'; // update with your path to firestore config
-// import { doc, setDoc, getDoc } from "firebase/firestore";
+import { db } from './services/firestore';
+// import { initializeApp } from "firebase/app";
+// import { getFirestore } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+
+
 
 
 
 
 export default function App() {
 
-  // const docRef = doc(db, "records", "recordList");
-  // const docSnap = getDoc(docRef);
+  async function getData() {
+    const q = query(collection(db, "record-collection"), where("title", "==", "shrimp"));
 
-  // console.log(docSnap.data);
-  // const data = {
-  //   name: 'Los Angeles',
-  //   state: 'CA',
-  //   country: 'USA'
-  // };
-  
-  
-  
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+    });
+
+  }
+
+  console.log(getData())
+
+
+
 
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
@@ -34,42 +43,28 @@ export default function App() {
 
   const [term, setTerm] = React.useState("");
 
-  
-  // React.useEffect(() => {
-  //   console.log("useEffect", recordList);
-  //   setDoc(doc(db, "records", "recordList"), { recordList })
-  // }, [recordList])
 
 
   const handleChange = (event) => {
     setSelectedMenu(event.target.className);
   }
 
-  async function setDocument(db) {
-    // [START firestore_data_set_from_map]
-    const data = {
-      name: 'Los Angeles',
-      state: 'CA',
-      country: 'USA'
-    };
-  
-    // Add a new document in collection "cities" with ID 'LA'
-    const res = await db.collection('cities').doc('LA').set(data);
-    // [END firestore_data_set_from_map]
-  
-    console.log('Set: ', res);
-  }
+
 
   function handleAddingNewRecordToList(newRecord) {
     setRecordList(oldList => [newRecord, ...oldList])
-    // console.log(recordList);
-    setDocument(db);
-    // setDoc(doc(db, "record-collection", "recordList"), { recordList }); 
-   
+
+    setDoc(doc(db, "record-collection", "recordList"), {
+      recordList
+    });
+
+    // const recordRef = doc(db, 'record-collection', 'recordList');
+    // setDoc(recordRef, { capital: true }, { merge: true });
+
     setSelectedMenu("See All Records");
   }
 
-  
+
 
   function handleChangingSelectedRecord(id) {
     const clickedRecord = recordList.filter(record => record.id === id)[0];
@@ -86,7 +81,9 @@ export default function App() {
 
   return (
     <div>
+
       <Header selectedMenu={selectedMenu} handleChange={handleChange} />
+
       {selectedMenu === "Add a Record" &&
         <Form onNewRecordCreation={handleAddingNewRecordToList} />}
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './style.css';
 import App from './App';
 // import firebase from "./services/firebase";
-import { db } from './services/firestore'; // update with your path to firestore config
+// import { db } from './services/firestore'; // update with your path to firestore config
 
 
 // const data = {
