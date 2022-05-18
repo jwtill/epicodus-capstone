@@ -42,7 +42,6 @@ export default function App() {
 
   const [recordList, setRecordList] = React.useState([]);
 
-
   const [selectedRecord, setSelectedRecord] = React.useState({});
 
   const [likeRecords, setLikeRecords] = React.useState([]);
@@ -59,39 +58,26 @@ export default function App() {
 
   function handleAddingNewRecordToList(newRecord) {
     setRecordList(oldList => [newRecord, ...oldList])
-
-    // updateDoc(doc(db, "record-collection", "recordList"), {
-    //   newRecord
-    // });
     const recordRef = doc(db, 'record-collection', 'recordList');
-    setDoc(recordRef, { ...recordList }, { merge: true });
+    setDoc(recordRef, { recordList }, { merge: true });
     setSelectedMenu("See All Records");
   }
 
-  // React.useEffect(() => {
-  //   console.log("UseEffect Running");
-  //   async function getData() {
-  //     const list = [];
-  //     const querySnapshot = await getDocs(collection(db, "record-collection"));
-  //     querySnapshot.forEach(doc => {
-  //       console.log(doc.data());
-  //       const { title, artist, genre, year, format, value, condition } = doc.data();
-  //       list.push({
-  //         title, 
-  //         artist, 
-  //         genre, 
-  //         year, 
-  //         format, 
-  //         value, 
-  //         condition
-  //       });
-  //     })
-  //     console.log("the list:", list);
-  //     setRecordList(list);
-  //   };
-  //   getData();
-  // }, []
-  // );
+  React.useEffect(() => {
+    console.log("UseEffect Running");
+    console.log("recordList:" , recordList)
+    async function getData() {
+      const list = [];
+      const querySnapshot = await getDocs(collection(db, "record-collection"));
+      querySnapshot.forEach(doc => {
+        list.push(doc.data());
+      })
+      setRecordList(list);
+      console.log("updated record list", recordList);
+    };
+    getData();
+  }, [selectedMenu]
+  );
 
 
 

@@ -84,7 +84,6 @@ function Form(props) {
         name="condition"
         value={formData.condition}
       />
-  
       <button>Submit</button>
     </form>
   )
