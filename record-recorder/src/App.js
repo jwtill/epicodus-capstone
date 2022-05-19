@@ -6,37 +6,34 @@ import RecordDetail from "./components/RecordDetail"
 import { db } from './services/firestore';
 // import { initializeApp } from "firebase/app";
 // import { getFirestore } from "firebase/firestore";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 
 
-
+// useEffect( () => {
+//   async function getData(){
+//     const list=[];
+//     setIsLoading(true);
+//     const querySnapshot = await getDocs(collection(db, "posts"));
+//     querySnapshot.forEach(doc => {
+//       const {title, description, location } = doc.data();
+//       list.push({
+//         title,
+//         description,
+//         location
+//       });
+//     })
+//     setPosts(list);
+//     setIsLoading(false);
+//   };
+//   getData();
+// }
+// );
 
 
 
 export default function App() {
-
-  // async function getData() {
-  //   const querySnapshot = await getDocs(collection(db, "record-collection"));
-  //   let results = [];
-  //   querySnapshot.forEach((doc) => {
-  //     results.push(doc.data());
-  //   });
-
-  // }
-  // getData().then(
-  //   function(results) {
-  //     return results;
-  //   }
-  // )
-
-  // const currentRecordData = getData();
-  // console.log("results: ", currentRecordData);
-
-
-
-
 
   const [selectedMenu, setSelectedMenu] = React.useState('Home');
 
@@ -48,36 +45,37 @@ export default function App() {
 
   const [term, setTerm] = React.useState("");
 
-
-
   const handleChange = (event) => {
     setSelectedMenu(event.target.className);
   }
-
-
-
+  //FirebaseError: Function setDoc() called with invalid data. Unsupported field value: undefined
   function handleAddingNewRecordToList(newRecord) {
-    setRecordList(oldList => [newRecord, ...oldList])
-    const recordRef = doc(db, 'record-collection', 'recordList');
-    setDoc(recordRef, { recordList }, { merge: true });
+    console.log("before record list", recordList);
+    console.log("new record", newRecord);
+    setRecordList(prevRecordList => [newRecord, ...prevRecordList])
+    console.log("after set recordlist", recordList);
+    // const recordRef = doc(db, 'record-collection', 'recordList');
+    // setDoc(recordRef, { ...recordList}, { merge: true });
     setSelectedMenu("See All Records");
   }
 
-  React.useEffect(() => {
-    console.log("UseEffect Running");
-    console.log("recordList:" , recordList)
-    async function getData() {
-      const list = [];
-      const querySnapshot = await getDocs(collection(db, "record-collection"));
-      querySnapshot.forEach(doc => {
-        list.push(doc.data());
-      })
-      setRecordList(list);
-      console.log("updated record list", recordList);
-    };
-    getData();
-  }, [selectedMenu]
-  );
+  // React.useEffect(() => {
+  //   // console.log("recordList before update:" , recordList)
+  //   async function getData() {
+  //     const list = [];
+  //     const querySnapshot = await getDocs(collection(db, "record-collection"));
+  //     querySnapshot.forEach(doc => {
+  //       const {title, artist, genre, year, format, value, condition } = doc.data();
+  //       list.push({title, artist, genre, year, format, value, condition});
+  //     })
+  //     console.log(list);
+      
+  //     setRecordList(list);
+  //     // console.log("updated record list", recordList);
+  //   };
+  //   getData();
+  // }, []
+  // );
 
 
 
@@ -98,7 +96,7 @@ export default function App() {
     <div>
 
       <Header selectedMenu={selectedMenu} handleChange={handleChange} />
-
+      
       {selectedMenu === "Add a Record" &&
         <Form onNewRecordCreation={handleAddingNewRecordToList} />}
 

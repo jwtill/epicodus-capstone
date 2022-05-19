@@ -240,9 +240,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
    border-radius: 5px;
 
  }
- .menu>div>ul>li:hover {
- /* background-color: #D9D9D9; */
-}
+
 .menu>div>ul>li:active {
   background-color: #D9D9D9;
   border: 1px solid black;

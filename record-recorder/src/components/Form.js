@@ -84,6 +84,12 @@ function Form(props) {
         name="condition"
         value={formData.condition}
       />
+      <input
+        type="hidden"
+        onChange={handleChange}
+        name="key"
+        value={nanoid()}
+      />
       <button>Submit</button>
     </form>
   )
