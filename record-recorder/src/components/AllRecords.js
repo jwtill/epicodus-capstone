@@ -2,15 +2,15 @@ import React from "react"
 import Record from "./Record"
 
 export default function AllRecords(props) {
-  const { records, term, onRecordSelection } = props;
+
   return (
     <div>
     
       <ul className="record-list">
-      <h1>{term ? `Other records with the "${term}" tag` : "All Records"} </h1>
-        {records.map((record) =>
+      <h1>{props.term ? `Other records with the "${props.term}" tag` : "All Records"}</h1>
+        {props.records.map((record) =>
             <Record
-              whenRecordClicked={onRecordSelection}
+              whenRecordClicked={props.onRecordSelection}
               title={record.title}
               artist={record.artist}
               genre={record.genre}
